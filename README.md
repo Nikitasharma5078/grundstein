@@ -1,4 +1,4 @@
-# Grundstein — Learn German A1 → C1
+# BhashaCheck — Learn German A1 → C1
 
 A German learning platform: course levels, lesson pages, login/signup, and a
 progress dashboard. Design system is Bauhaus-inspired (circle/square/triangle

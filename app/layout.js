@@ -2,7 +2,7 @@ import "./globals.css";
 import StreakBadge from "@/components/StreakBadge";
 
 export const metadata = {
-  title: "Grundstein — Learn German",
+  title: "BhashaCheck — Learn German",
   description: "Learn German from A1 to C1. Structured lessons, real progress tracking.",
 };
 
@@ -29,7 +29,7 @@ function Nav() {
             <circle cx="7" cy="14" r="6" fill="var(--gold)" />
             <rect x="15" y="8" width="12" height="12" fill="var(--navy)" />
           </svg>
-          <span className="display font-semibold text-lg tracking-tight">Grundstein</span>
+          <span className="display font-semibold text-lg tracking-tight">BhashaCheck</span>
         </a>
         <nav className="hidden sm:flex items-center gap-8 mono text-sm">
           <a href="/courses" className="hover:text-gold transition-colors">Courses</a>
@@ -55,7 +55,7 @@ function Footer() {
   return (
     <footer className="border-t-2 border-ink mt-24">
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between gap-4">
-        <p className="mono text-xs text-ink-soft">Grundstein — German, built from the ground up.</p>
+        <p className="mono text-xs text-ink-soft">BhashaCheck — German, built from the ground up.</p>
         <div className="flex gap-6 mono text-xs">
           <a href="/courses" className="hover:text-gold">A1–C1</a>
           <a href="/dashboard" className="hover:text-gold">Dashboard</a>

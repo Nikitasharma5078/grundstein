@@ -4,7 +4,7 @@ export default function Home() {
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="mono text-xs text-gold mb-4 tracking-widest">GRUNDSTEIN · A1 → C1</p>
+          <p className="mono text-xs text-gold mb-4 tracking-widest">BHASHACHECK · A1 → C1</p>
           <h1 className="display text-5xl sm:text-6xl font-semibold leading-[1.02] mb-6">
             German, built<br />from the<br />ground up.
           </h1>
