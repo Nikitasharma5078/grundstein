@@ -2,14 +2,14 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #F3EEE4;
-  --paper-raised: #FBF8F2;
-  --ink: #211E1B;
-  --ink-soft: #726A5C;
-  --gold: #A9812F;
-  --burgundy: #6E2836;
-  --navy: #1F2C4C;
-  --line: #211E1B;
+  --paper: #F5EEE1;
+  --paper-raised: #FBF6EC;
+  --ink: #1E2640;
+  --ink-soft: #5B6479;
+  --gold: #DC9750;
+  --burgundy: #B5713A;
+  --navy: #1E2640;
+  --line: #1E2640;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Work Sans', sans-serif;
