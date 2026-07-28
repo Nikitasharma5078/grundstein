@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --paper: #EEEAE0;
+  --paper-raised: #F6F3EB;
+  --ink: #1C1B19;
+  --ink-soft: #6F6A5E;
+  --red: #D6402C;
+  --yellow: #F2B705;
+  --blue: #1D4E89;
+  --line: #1C1B19;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-red: var(--red);
+  --color-yellow: var(--yellow);
+  --color-blue: var(--blue);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.shape-circle {
+  border-radius: 50%;
+}
+
+.shape-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.hairline {
+  border-color: var(--ink);
+}
