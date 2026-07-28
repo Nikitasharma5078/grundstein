@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --paper: #EEEAE0;
-  --paper-raised: #F6F3EB;
-  --ink: #1C1B19;
-  --ink-soft: #6F6A5E;
-  --red: #D6402C;
-  --yellow: #F2B705;
-  --blue: #1D4E89;
-  --line: #1C1B19;
+  --paper: #F3EEE4;
+  --paper-raised: #FBF8F2;
+  --ink: #211E1B;
+  --ink-soft: #726A5C;
+  --gold: #A9812F;
+  --burgundy: #6E2836;
+  --navy: #1F2C4C;
+  --line: #211E1B;
 
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Fraunces', serif;
   --font-body: 'Work Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
 }
@@ -21,9 +21,9 @@
   --color-paper-raised: var(--paper-raised);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-red: var(--red);
-  --color-yellow: var(--yellow);
-  --color-blue: var(--blue);
+  --color-gold: var(--gold);
+  --color-burgundy: var(--burgundy);
+  --color-navy: var(--navy);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
@@ -54,7 +54,7 @@ h1, h2, h3, .display {
 }
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--navy);
   outline-offset: 2px;
 }
 

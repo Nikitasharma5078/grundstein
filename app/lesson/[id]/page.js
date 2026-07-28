@@ -1,5 +1,6 @@
 import { COURSES } from "@/data/courses";
 import { notFound } from "next/navigation";
+import MarkComplete from "@/components/MarkComplete";
 
 function findLesson(id) {
   for (const key of Object.keys(COURSES)) {
@@ -18,31 +19,30 @@ export default async function LessonPage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
-      <a href={`/courses/${levelKey}`} className="mono text-xs text-ink-soft hover:text-red">
+      <a href={`/courses/${levelKey}`} className="mono text-xs text-ink-soft hover:text-gold">
         ← {course.title}
       </a>
 
-      <p className="mono text-xs text-red mt-6 mb-2 tracking-widest">
-        {course.level} · LEKTION
+      <p className="mono text-xs text-gold mt-6 mb-2 tracking-widest">
+        {course.level} · LESSON
       </p>
       <h1 className="display text-4xl font-semibold mb-10">{lesson.title}</h1>
 
       <Section label="Wortschatz" title="Vocabulary">
-        <p className="text-ink-soft text-sm mb-4">
-          Placeholder vocabulary table — replace with real words for this lesson.
-        </p>
         <div className="border-2 border-ink">
-          {[
-            ["das Wort", "the word"],
-            ["der Satz", "the sentence"],
-            ["die Übung", "the exercise"],
-          ].map(([de, en]) => (
+          {lesson.vocab.map(([de, en]) => (
             <div key={de} className="flex border-b-2 border-ink last:border-b-0">
               <div className="w-1/2 p-3 mono text-sm border-r-2 border-ink">{de}</div>
               <div className="w-1/2 p-3 text-sm text-ink-soft">{en}</div>
             </div>
           ))}
         </div>
+        <a
+          href={`/flashcards/${levelKey}`}
+          className="inline-block mt-4 mono text-xs text-navy underline underline-offset-4 hover:text-burgundy"
+        >
+          Practice this level's words as flashcards →
+        </a>
       </Section>
 
       <Section label="Grammatik" title="Grammar">
@@ -71,9 +71,7 @@ export default async function LessonPage({ params }) {
         </div>
       </Section>
 
-      <button className="bg-red text-paper mono text-sm px-6 py-3 hover:bg-ink transition-colors mt-6">
-        Mark lesson complete
-      </button>
+      <MarkComplete lessonId={lesson.id} />
     </div>
   );
 }
@@ -81,7 +79,7 @@ export default async function LessonPage({ params }) {
 function Section({ label, title, children }) {
   return (
     <div className="mb-12">
-      <p className="mono text-xs text-blue mb-2 tracking-widest">{label.toUpperCase()}</p>
+      <p className="mono text-xs text-navy mb-2 tracking-widest">{label.toUpperCase()}</p>
       <h2 className="display text-xl font-semibold mb-4">{title}</h2>
       {children}
     </div>

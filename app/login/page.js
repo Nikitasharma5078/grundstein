@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   return (
     <div className="max-w-sm mx-auto px-6 py-20">
-      <p className="mono text-xs text-red mb-2 tracking-widest">ANMELDEN</p>
+      <p className="mono text-xs text-gold mb-2 tracking-widest">LOG IN</p>
       <h1 className="display text-3xl font-semibold mb-8">Log in</h1>
 
       <form onSubmit={handleLogin} className="space-y-5">
@@ -27,17 +27,17 @@ export default function LoginPage() {
         <Field label="Password" type="password" value={password} onChange={setPassword} />
         <button
           type="submit"
-          className="w-full bg-ink text-paper mono text-sm px-6 py-3 hover:bg-red transition-colors"
+          className="w-full bg-ink text-paper mono text-sm px-6 py-3 hover:bg-gold transition-colors"
         >
           Log in
         </button>
       </form>
 
-      {status && <p className="mono text-xs text-blue mt-4">{status}</p>}
+      {status && <p className="mono text-xs text-navy mt-4">{status}</p>}
 
       <p className="text-sm text-ink-soft mt-8">
         New here?{" "}
-        <a href="/signup" className="text-red underline underline-offset-4">
+        <a href="/signup" className="text-gold underline underline-offset-4">
           Create an account
         </a>
       </p>

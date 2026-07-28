@@ -1,4 +1,5 @@
 import { COURSES } from "@/data/courses";
+import StreakSummary from "@/components/StreakSummary";
 
 // Placeholder progress data — once Supabase is connected, replace this
 // with a real query against the `progress` table for the logged-in user.
@@ -11,11 +12,13 @@ export default function DashboardPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <p className="mono text-xs text-red mb-2 tracking-widest">FORTSCHRITT</p>
+      <p className="mono text-xs text-gold mb-2 tracking-widest">PROGRESS</p>
       <h1 className="display text-4xl font-semibold mb-2">Your progress</h1>
       <p className="text-ink-soft mb-10">
         {done} of {totalLessons} lessons complete across all levels.
       </p>
+
+      <StreakSummary />
 
       <div className="space-y-10">
         {levels.map(([key, c]) => {

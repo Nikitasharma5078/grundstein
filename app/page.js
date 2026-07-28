@@ -4,22 +4,22 @@ export default function Home() {
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="mono text-xs text-red mb-4 tracking-widest">GRUNDSTEIN · A1 → C1</p>
+          <p className="mono text-xs text-gold mb-4 tracking-widest">GRUNDSTEIN · A1 → C1</p>
           <h1 className="display text-5xl sm:text-6xl font-semibold leading-[1.02] mb-6">
-            Deutsch,<br />gebaut auf<br />Grundlagen.
+            German, built<br />from the<br />ground up.
           </h1>
           <p className="text-lg text-ink-soft max-w-md mb-8">
-            German, built on fundamentals. Every lesson stacks on the last —
-            structured like a language should be taught, not a feed you scroll.
+            A structured path from your first word to fluency — built for
+            Indian students starting from zero, one solid lesson at a time.
           </p>
           <div className="flex items-center gap-4">
             <a
               href="/signup"
-              className="bg-red text-paper mono text-sm px-6 py-3 hover:bg-ink transition-colors inline-block"
+              className="bg-gold text-paper mono text-sm px-6 py-3 hover:bg-ink transition-colors inline-block"
             >
               Start with A1
             </a>
-            <a href="/courses" className="mono text-sm underline underline-offset-4 hover:text-red">
+            <a href="/courses" className="mono text-sm underline underline-offset-4 hover:text-gold">
               See all levels
             </a>
           </div>
@@ -27,10 +27,10 @@ export default function Home() {
 
         {/* Signature geometric composition: shape system for A / B / C bands */}
         <div className="relative h-80 hidden md:block" aria-hidden="true">
-          <div className="absolute left-4 top-10 w-40 h-40 shape-circle bg-red" />
-          <div className="absolute right-6 top-0 w-32 h-32 bg-blue" />
+          <div className="absolute left-4 top-10 w-40 h-40 shape-circle bg-gold" />
+          <div className="absolute right-6 top-0 w-32 h-32 bg-navy" />
           <div
-            className="absolute right-16 bottom-0 w-36 h-32 shape-triangle bg-yellow"
+            className="absolute right-16 bottom-0 w-36 h-32 shape-triangle bg-burgundy"
           />
           <p className="absolute left-10 top-24 mono text-xs text-paper font-bold">A</p>
           <p className="absolute right-16 top-10 mono text-xs text-paper font-bold">B</p>
@@ -49,22 +49,25 @@ export default function Home() {
           <div className="grid sm:grid-cols-3 gap-px bg-ink border-2 border-ink">
             <Band
               shape="circle"
-              color="bg-red"
-              band="Grundstufe"
+              color="bg-gold"
+              band="Beginner"
+              sub="Grundstufe"
               levels="A1 · A2"
               desc="Everyday phrases, introductions, the present tense."
             />
             <Band
               shape="square"
-              color="bg-blue"
-              band="Aufbaustufe"
+              color="bg-navy"
+              band="Intermediate"
+              sub="Aufbaustufe"
               levels="B1 · B2"
               desc="Opinions, past tense, workplace and travel German."
             />
             <Band
               shape="triangle"
-              color="bg-yellow"
-              band="Fortgeschritten"
+              color="bg-burgundy"
+              band="Advanced"
+              sub="Fortgeschritten"
               levels="C1"
               desc="Nuance, subjunctive mood, near-native fluency."
             />
@@ -84,14 +87,15 @@ export default function Home() {
   );
 }
 
-function Band({ shape, color, band, levels, desc }) {
+function Band({ shape, color, band, sub, levels, desc }) {
   const shapeClass =
     shape === "circle" ? "shape-circle" : shape === "triangle" ? "shape-triangle" : "";
   return (
     <div className="bg-paper p-8">
       <div className={`w-10 h-10 ${color} ${shapeClass} mb-6`} />
       <p className="mono text-xs text-ink-soft mb-1">{levels}</p>
-      <h3 className="display text-xl font-semibold mb-2">{band}</h3>
+      <h3 className="display text-xl font-semibold mb-1">{band}</h3>
+      <p className="mono text-[11px] text-ink-soft italic mb-2">{sub}</p>
       <p className="text-sm text-ink-soft">{desc}</p>
     </div>
   );
@@ -100,7 +104,7 @@ function Band({ shape, color, band, levels, desc }) {
 function Step({ n, title, text }) {
   return (
     <div>
-      <p className="mono text-red text-sm mb-3">{n}</p>
+      <p className="mono text-gold text-sm mb-3">{n}</p>
       <h3 className="display text-lg font-semibold mb-2">{title}</h3>
       <p className="text-sm text-ink-soft">{text}</p>
     </div>

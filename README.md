@@ -7,12 +7,22 @@ German design movement.
 
 ## What's already built
 - Homepage, `/courses` (level grid), `/courses/[level]` (lesson list)
-- `/lesson/[id]` lesson template (vocab / grammar / exercise)
+- `/lesson/[id]` lesson template (vocab / grammar / exercise), with a
+  "Mark lesson complete" button that bumps the daily streak
+- `/flashcards` and `/flashcards/[level]` — flip-card vocab practice pulled
+  straight from each level's lesson data
+- Daily streak tracking (shown in the nav bar and on `/dashboard`) — currently
+  stored in the browser's localStorage; swap for a Supabase `streaks` table
+  once accounts are wired up so it survives across devices
 - `/login`, `/signup` (wired for Supabase Auth — currently shows a friendly
   message until you connect real keys)
-- `/dashboard` progress view (currently mock data)
+- `/dashboard` progress view (currently mock lesson-completion data)
 - Course/lesson content lives in `data/courses.js` — edit that file to add
-  real lessons, no component code required
+  real lessons and vocab, no component code required. Every lesson's `vocab`
+  array automatically powers that level's flashcard deck too.
+- Classy jewel-tone palette (cream paper, ink, gold/navy/burgundy) with a
+  serif display font (Fraunces) — still uses the circle/square/triangle
+  shape system to mark the three CEFR bands
 
 ## Run it locally
 ```bash

@@ -11,7 +11,7 @@ export default async function LevelPage({ params }) {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-16">
-      <a href="/courses" className="mono text-xs text-ink-soft hover:text-red">← All courses</a>
+      <a href="/courses" className="mono text-xs text-ink-soft hover:text-gold">← All courses</a>
 
       <div className="flex items-center gap-4 mt-6 mb-3">
         <div className={`w-10 h-10 ${c.color} ${shapeClass}`} />
@@ -32,7 +32,7 @@ export default async function LevelPage({ params }) {
               <h3 className="display text-lg font-semibold">{lesson.title}</h3>
               <p className="text-sm text-ink-soft">{lesson.desc}</p>
             </div>
-            <span className="mono text-xs text-blue">Start →</span>
+            <span className="mono text-xs text-navy">Start →</span>
           </a>
         ))}
       </div>
