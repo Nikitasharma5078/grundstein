@@ -15,7 +15,8 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <a
               href="/signup"
-              className="bg-gold text-paper mono text-sm px-6 py-3 hover:bg-ink transition-colors inline-block"
+              className="btn-3d bg-gold text-paper mono text-sm px-6 py-3.5 hover:brightness-105 inline-block font-semibold"
+              style={{ "--btn-shadow": "var(--ink)" }}
             >
               Start with A1
             </a>
@@ -46,7 +47,7 @@ export default function Home() {
             Every course sits inside one of the three CEFR bands. The shape tells you
             where you are before you even read the label.
           </p>
-          <div className="grid sm:grid-cols-3 gap-px bg-ink border-2 border-ink">
+          <div className="grid sm:grid-cols-3 gap-px bg-ink border-2 border-ink rounded-2xl overflow-hidden">
             <Band
               shape="circle"
               color="bg-gold"

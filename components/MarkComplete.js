@@ -16,9 +16,12 @@ export default function MarkComplete({ lessonId }) {
     <button
       onClick={handleClick}
       disabled={done}
-      className={`mono text-sm px-6 py-3 transition-colors mt-6 ${
-        done ? "bg-paper-raised text-ink-soft border-2 border-ink" : "bg-gold text-paper hover:bg-ink"
+      className={`mono text-sm px-6 py-3.5 mt-6 font-semibold ${
+        done
+          ? "bg-paper-raised text-ink-soft border-2 border-ink rounded-2xl"
+          : "btn-3d bg-gold text-paper hover:brightness-105"
       }`}
+      style={!done ? { "--btn-shadow": "var(--ink)" } : undefined}
     >
       {done ? "✓ Lesson complete — streak updated" : "Mark lesson complete"}
     </button>

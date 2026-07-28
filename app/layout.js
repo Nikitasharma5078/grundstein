@@ -39,7 +39,8 @@ function Nav() {
           <a href="/login" className="hover:text-gold transition-colors">Log in</a>
           <a
             href="/signup"
-            className="bg-ink text-paper px-4 py-2 hover:bg-gold transition-colors"
+            className="btn-3d bg-gold text-paper px-5 py-2.5 hover:brightness-105 font-semibold text-sm"
+            style={{ "--btn-shadow": "var(--ink)" }}
           >
             Start free
           </a>
