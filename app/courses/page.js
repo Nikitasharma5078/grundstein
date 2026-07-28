@@ -17,7 +17,11 @@ export default function CoursesPage() {
           <h2 className="mono text-sm text-ink-soft mb-4 uppercase tracking-wide">
             {band.name} <span className="italic text-ink-soft normal-case">— {band.sub}</span>
           </h2>
-          <div className="grid sm:grid-cols-2 gap-px bg-ink border-2 border-ink rounded-2xl overflow-hidden">
+          <div
+            className={`grid ${
+              band.levels.length > 1 ? "sm:grid-cols-2" : "sm:grid-cols-1 max-w-sm"
+            } gap-px bg-ink border-2 border-ink rounded-2xl overflow-hidden`}
+          >
             {band.levels.map((lvl) => {
               const c = COURSES[lvl];
               const shapeClass =
