@@ -105,3 +105,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .animate-fadein {
   animation: fadein 0.25s ease-out;
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(3deg); }
+}
+.float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+.float-slower {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: -2s;
+}
+.float-fast {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+.flip-inner {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+.flip-card.is-flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}

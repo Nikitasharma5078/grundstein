@@ -32,7 +32,6 @@ function Nav() {
           <span className="display font-semibold text-lg tracking-tight">BhashaCheck</span>
         </a>
         <nav className="hidden sm:flex items-center gap-8 mono text-sm">
-          <a href="/about" className="hover:text-gold transition-colors">How it works</a>
           <a href="/courses" className="hover:text-gold transition-colors">Courses</a>
           <a href="/flashcards" className="hover:text-gold transition-colors">Flashcards</a>
           <a href="/dashboard" className="hover:text-gold transition-colors">Progress</a>
