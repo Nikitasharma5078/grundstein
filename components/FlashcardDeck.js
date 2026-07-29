@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { bumpStreak } from "@/lib/streak";
+import SpeakButton from "@/components/SpeakButton";
 
 export default function FlashcardDeck({ cards, color }) {
   const [index, setIndex] = useState(0);
@@ -36,16 +37,23 @@ export default function FlashcardDeck({ cards, color }) {
         Card {index + 1} of {cards.length} · {card.lesson}
       </p>
 
-      <button
-        onClick={() => setFlipped(!flipped)}
-        className={`w-full h-56 border-2 border-ink flex items-center justify-center text-center p-8 transition-colors ${
-          flipped ? "bg-paper-raised" : color
-        }`}
-      >
-        <span className={`display text-3xl font-semibold ${flipped ? "text-ink" : "text-paper"}`}>
-          {flipped ? card.en : card.de}
-        </span>
-      </button>
+      <div className="relative">
+        <button
+          onClick={() => setFlipped(!flipped)}
+          className={`w-full h-56 border-2 border-ink flex items-center justify-center text-center p-8 transition-colors ${
+            flipped ? "bg-paper-raised" : color
+          }`}
+        >
+          <span className={`display text-3xl font-semibold ${flipped ? "text-ink" : "text-paper"}`}>
+            {flipped ? card.en : card.de}
+          </span>
+        </button>
+        {!flipped && (
+          <div className="absolute top-3 right-3">
+            <SpeakButton text={card.de} className="text-paper" />
+          </div>
+        )}
+      </div>
       <p className="mono text-xs text-ink-soft text-center mt-3">Tap the card to flip</p>
 
       <div className="flex gap-3 mt-8">

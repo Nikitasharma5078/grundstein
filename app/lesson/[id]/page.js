@@ -1,6 +1,7 @@
 import { COURSES } from "@/data/courses";
 import { notFound } from "next/navigation";
 import MarkComplete from "@/components/MarkComplete";
+import SpeakButton from "@/components/SpeakButton";
 
 function findLesson(id) {
   for (const key of Object.keys(COURSES)) {
@@ -31,8 +32,11 @@ export default async function LessonPage({ params }) {
       <Section label="Wortschatz" title="Vocabulary">
         <div className="border-2 border-ink">
           {lesson.vocab.map(([de, en]) => (
-            <div key={de} className="flex border-b-2 border-ink last:border-b-0">
-              <div className="w-1/2 p-3 mono text-sm border-r-2 border-ink">{de}</div>
+            <div key={de} className="flex items-center border-b-2 border-ink last:border-b-0">
+              <div className="w-1/2 p-3 mono text-sm border-r-2 border-ink flex items-center gap-2">
+                <SpeakButton text={de} size="sm" className="text-navy" />
+                {de}
+              </div>
               <div className="w-1/2 p-3 text-sm text-ink-soft">{en}</div>
             </div>
           ))}

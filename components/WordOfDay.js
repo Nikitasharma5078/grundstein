@@ -1,6 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { RefreshCw } from "lucide-react";
+import SpeakButton from "@/components/SpeakButton";
 
 const WORDS = [
   { de: "die Freude", en: "joy", note: "feminine noun" },
@@ -36,7 +37,10 @@ export default function WordOfDay() {
       >
         <div className="flip-inner relative w-full h-full">
           <div className="flip-face absolute inset-0 rounded-2xl bg-paper-raised border-2 border-ink-soft/20 flex flex-col items-center justify-center p-6 node-shadow">
-            <p className="display text-2xl font-semibold text-center">{word.de}</p>
+            <div className="flex items-center gap-3">
+              <p className="display text-2xl font-semibold text-center">{word.de}</p>
+              <SpeakButton text={word.de} size="sm" className="text-gold" />
+            </div>
             <p className="mono text-[11px] text-ink-soft mt-2">{word.note}</p>
           </div>
           <div className="flip-face flip-back absolute inset-0 rounded-2xl bg-gold flex flex-col items-center justify-center p-6 node-shadow">
