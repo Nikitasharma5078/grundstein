@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
+import { Layers, Zap } from "lucide-react";
 
 export default function CourseTabs({ bands, courses }) {
+  const [mode, setMode] = useState("courses"); // "courses" | "flashcards"
   const [active, setActive] = useState(0);
   const band = bands[active];
 
@@ -10,6 +12,22 @@ export default function CourseTabs({ bands, courses }) {
 
   return (
     <div>
+      {/* Mode toggle: Courses vs Flashcards */}
+      <div className="flex gap-3 mb-8" role="tablist" aria-label="View mode">
+        <ModeButton
+          active={mode === "courses"}
+          onClick={() => setMode("courses")}
+          icon={<Layers className="w-5 h-5" />}
+          label="Courses"
+        />
+        <ModeButton
+          active={mode === "flashcards"}
+          onClick={() => setMode("flashcards")}
+          icon={<Zap className="w-5 h-5" />}
+          label="Flashcards"
+        />
+      </div>
+
       {/* Tab pills */}
       <div className="flex flex-wrap gap-3 mb-10" role="tablist" aria-label="Course level bands">
         {bands.map((b, i) => {
@@ -20,7 +38,7 @@ export default function CourseTabs({ bands, courses }) {
               role="tab"
               aria-selected={isActive}
               onClick={() => setActive(i)}
-              className={`mono text-xs font-bold px-5 py-3 rounded-full border-2 transition-all duration-200 ${
+              className={`mono text-sm font-bold px-5 py-3 rounded-full border-2 transition-all duration-200 ${
                 isActive
                   ? "text-paper scale-105 node-shadow"
                   : "text-ink-soft border-ink-soft/30 hover:border-ink-soft hover:text-ink"
@@ -39,7 +57,7 @@ export default function CourseTabs({ bands, courses }) {
       </div>
 
       {/* Active band panel */}
-      <div key={band.key} className="animate-fadein">
+      <div key={`${mode}-${band.key}`} className="animate-fadein">
         <h2 className="display text-2xl font-semibold mb-1">
           {band.name} <span className="italic text-ink-soft text-lg font-normal">— {band.sub}</span>
         </h2>
@@ -54,25 +72,39 @@ export default function CourseTabs({ bands, courses }) {
             const c = courses[lvl];
             const shapeClass =
               c.shape === "circle" ? "shape-circle" : c.shape === "triangle" ? "shape-triangle" : "";
+            const wordCount = c.lessons.reduce((sum, l) => sum + l.vocab.length, 0);
+            const href = mode === "courses" ? `/courses/${lvl}` : `/flashcards/${lvl}`;
             return (
               <a
                 key={lvl}
-                href={`/courses/${lvl}`}
+                href={href}
                 className="group bg-paper-raised p-8 flex gap-6 items-start rounded-2xl border-2 border-ink-soft/15 hover:border-ink hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
               >
                 <div
                   className={`w-12 h-12 shrink-0 ${c.color} ${shapeClass} flex items-center justify-center group-hover:scale-110 transition-transform`}
                 >
-                  <span className="mono text-paper text-[10px] font-bold">{c.level}</span>
+                  <span className="mono text-paper text-xs font-bold">{c.level}</span>
                 </div>
                 <div>
-                  <p className="mono text-xs text-ink-soft mb-1">{c.level}</p>
+                  <p className="mono text-sm text-ink-soft mb-1">{c.level}</p>
                   <h3 className="display text-xl font-semibold mb-2">{c.title}</h3>
-                  <p className="text-sm text-ink-soft mb-3">{c.desc}</p>
-                  <p className="mono text-xs text-gold flex items-center gap-1 group-hover:gap-2 transition-all">
-                    {c.lessons.length} lessons
-                    <span aria-hidden="true">→</span>
-                  </p>
+                  {mode === "courses" ? (
+                    <>
+                      <p className="text-base text-ink-soft mb-3">{c.desc}</p>
+                      <p className="mono text-sm text-gold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        {c.lessons.length} lessons
+                        <span aria-hidden="true">→</span>
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-base text-ink-soft mb-3">Flip through this level's vocabulary.</p>
+                      <p className="mono text-sm text-gold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        {wordCount} words
+                        <span aria-hidden="true">→</span>
+                      </p>
+                    </>
+                  )}
                 </div>
               </a>
             );
@@ -80,5 +112,24 @@ export default function CourseTabs({ bands, courses }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function ModeButton({ active, onClick, icon, label }) {
+  return (
+    <button
+      role="tab"
+      aria-selected={active}
+      onClick={onClick}
+      className={`flex items-center gap-2 font-semibold text-base px-6 py-3.5 rounded-2xl border-2 transition-all duration-200 ${
+        active
+          ? "btn-3d bg-ink text-paper border-ink"
+          : "text-ink-soft border-ink-soft/30 hover:border-ink-soft hover:text-ink"
+      }`}
+      style={active ? { "--btn-shadow": "var(--gold)" } : undefined}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }

@@ -31,7 +31,7 @@ function Nav() {
           </svg>
           <span className="display font-semibold text-lg tracking-tight">BhashaCheck</span>
         </a>
-        <nav className="hidden sm:flex items-center gap-8 mono text-sm">
+        <nav className="hidden sm:flex items-center gap-8 mono text-base">
           <a href="/courses" className="hover:text-gold transition-colors">Courses</a>
           <a href="/flashcards" className="hover:text-gold transition-colors">Flashcards</a>
           <a href="/dashboard" className="hover:text-gold transition-colors">Progress</a>
@@ -39,7 +39,7 @@ function Nav() {
           <a href="/login" className="hover:text-gold transition-colors">Log in</a>
           <a
             href="/signup"
-            className="btn-3d bg-gold text-paper px-5 py-2.5 hover:brightness-105 font-semibold text-sm"
+            className="btn-3d bg-gold text-paper px-5 py-2.5 hover:brightness-105 font-semibold text-base"
             style={{ "--btn-shadow": "var(--ink)" }}
           >
             Start free
