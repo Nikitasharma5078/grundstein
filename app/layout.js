@@ -34,6 +34,7 @@ function Nav() {
         <nav className="hidden sm:flex items-center gap-8 mono text-base">
           <a href="/courses" className="hover:text-gold transition-colors">Courses</a>
           <a href="/flashcards" className="hover:text-gold transition-colors">Flashcards</a>
+          <a href="/test" className="hover:text-gold transition-colors">Test</a>
           <a href="/dashboard" className="hover:text-gold transition-colors">Progress</a>
           <StreakBadge />
           <a href="/login" className="hover:text-gold transition-colors">Log in</a>

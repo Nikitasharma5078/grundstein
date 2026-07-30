@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Layers, Zap } from "lucide-react";
+import { Layers, Zap, GraduationCap } from "lucide-react";
 
 export default function CourseTabs({ bands, courses }) {
   const [mode, setMode] = useState("courses"); // "courses" | "flashcards"
@@ -25,6 +25,12 @@ export default function CourseTabs({ bands, courses }) {
           onClick={() => setMode("flashcards")}
           icon={<Zap className="w-5 h-5" />}
           label="Flashcards"
+        />
+        <ModeButton
+          active={mode === "test"}
+          onClick={() => setMode("test")}
+          icon={<GraduationCap className="w-5 h-5" />}
+          label="Test"
         />
       </div>
 
@@ -73,7 +79,8 @@ export default function CourseTabs({ bands, courses }) {
             const shapeClass =
               c.shape === "circle" ? "shape-circle" : c.shape === "triangle" ? "shape-triangle" : "";
             const wordCount = c.lessons.reduce((sum, l) => sum + l.vocab.length, 0);
-            const href = mode === "courses" ? `/courses/${lvl}` : `/flashcards/${lvl}`;
+            const href =
+              mode === "courses" ? `/courses/${lvl}` : mode === "flashcards" ? `/flashcards/${lvl}` : `/test/${lvl}`;
             return (
               <a
                 key={lvl}
@@ -96,9 +103,17 @@ export default function CourseTabs({ bands, courses }) {
                         <span aria-hidden="true">→</span>
                       </p>
                     </>
-                  ) : (
+                  ) : mode === "flashcards" ? (
                     <>
                       <p className="text-base text-ink-soft mb-3">Flip through this level's vocabulary.</p>
+                      <p className="mono text-sm text-gold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        {wordCount} words
+                        <span aria-hidden="true">→</span>
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-base text-ink-soft mb-3">Multiple-choice test on this level's vocabulary.</p>
                       <p className="mono text-sm text-gold flex items-center gap-1 group-hover:gap-2 transition-all">
                         {wordCount} words
                         <span aria-hidden="true">→</span>
