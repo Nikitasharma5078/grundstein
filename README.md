@@ -47,19 +47,55 @@ git push -u origin main
 3. Every future `git push` to `main` auto-redeploys, so the site stays live
    with zero manual steps
 
-## Connect real login + progress tracking
+## Connect real login + progress tracking (Supabase)
+Login, signup, and progress tracking are already wired in the code —
+`app/login`, `app/signup`, `MarkComplete`, and `app/dashboard` all use
+Supabase automatically once it's configured. Until then, the site falls
+back gracefully (marking lessons complete only updates your local streak).
+
 1. Create a free project at https://supabase.com
-2. In Project Settings → API, copy the Project URL and anon public key
+2. In **Project Settings → API**, copy the **Project URL** and **anon public key**
 3. Create `.env.local` in the project root:
    ```
    NEXT_PUBLIC_SUPABASE_URL=your-project-url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
    ```
-4. In Supabase, create a `progress` table: `user_id`, `lesson_id`, `completed`, `score`
-5. Add the same two env vars in Vercel → Project Settings → Environment Variables
-   (so the live site can log in too)
-6. Replace the `MOCK_PROGRESS` object in `app/dashboard/page.js` with a real
-   Supabase query filtered by the logged-in user
+4. In the Supabase dashboard, open the **SQL Editor** and run:
+   ```sql
+   create table progress (
+     user_id uuid references auth.users not null,
+     lesson_id text not null,
+     completed boolean default true,
+     updated_at timestamp with time zone default now(),
+     primary key (user_id, lesson_id)
+   );
+
+   alter table progress enable row level security;
+
+   create policy "Users can view their own progress"
+     on progress for select
+     using (auth.uid() = user_id);
+
+   create policy "Users can insert their own progress"
+     on progress for insert
+     with check (auth.uid() = user_id);
+
+   create policy "Users can update their own progress"
+     on progress for update
+     using (auth.uid() = user_id);
+   ```
+   This creates the table and locks it down so each person can only ever
+   read or write their own rows.
+5. Restart your dev server (`npm run dev`) so it picks up `.env.local`
+6. Add the same two env vars in **Vercel → Project Settings → Environment
+   Variables**, then redeploy — this makes login work on the live site too
+7. By default, Supabase requires email confirmation on signup. To skip that
+   while testing, go to **Authentication → Providers → Email** and turn off
+   "Confirm email" (turn it back on before going fully public)
+
+Once this is done: signing up creates a real account, the nav shows your
+email with a Log out button, marking a lesson complete saves it to the
+`progress` table, and the dashboard reads real progress instead of mock data.
 
 ## Add more lessons
 Everything is driven by `data/courses.js`. Add a lesson object to any level's

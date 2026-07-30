@@ -1,5 +1,7 @@
 import "./globals.css";
 import StreakBadge from "@/components/StreakBadge";
+import NavAuth from "@/components/NavAuth";
+import { AuthProvider } from "@/lib/AuthProvider";
 
 export const metadata = {
   title: "BhashaCheck — Learn German",
@@ -10,11 +12,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen flex flex-col">
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <AuthProvider>
+          <div className="min-h-screen flex flex-col">
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );
@@ -37,14 +41,7 @@ function Nav() {
           <a href="/test" className="hover:text-gold transition-colors">Test</a>
           <a href="/dashboard" className="hover:text-gold transition-colors">Progress</a>
           <StreakBadge />
-          <a href="/login" className="hover:text-gold transition-colors">Log in</a>
-          <a
-            href="/signup"
-            className="btn-3d bg-gold text-paper px-5 py-2.5 hover:brightness-105 font-semibold text-base"
-            style={{ "--btn-shadow": "var(--ink)" }}
-          >
-            Start free
-          </a>
+          <NavAuth />
         </nav>
         <a href="/login" className="sm:hidden mono text-sm">Log in</a>
       </div>
