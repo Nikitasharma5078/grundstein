@@ -26,7 +26,7 @@ export default function NavAuth() {
   return (
     <>
       <span className="text-ink-soft text-sm max-w-[10rem] truncate" title={user.email}>
-        {user.email}
+        {user.user_metadata?.username || user.email}
       </span>
       <button
         onClick={() => supabase.auth.signOut()}

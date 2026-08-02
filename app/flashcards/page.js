@@ -11,22 +11,25 @@ export default function FlashcardsIndex() {
         vocabulary you've already seen in that level's lessons.
       </p>
 
-      <div className="grid sm:grid-cols-2 gap-px bg-ink border-2 border-ink">
-        {levels.map(([key, c]) => {
+      <div className="grid sm:grid-cols-2 gap-px bg-ink border-2 border-ink rounded-2xl overflow-hidden">
+        {levels.map(([key, c], i) => {
           const shapeClass =
             c.shape === "circle" ? "shape-circle" : c.shape === "triangle" ? "shape-triangle" : "";
           const wordCount = c.lessons.reduce((sum, l) => sum + l.vocab.length, 0);
+          const isLastOdd = i === levels.length - 1 && levels.length % 2 !== 0;
           return (
             <a
               key={key}
               href={`/flashcards/${key}`}
-              className="bg-paper p-8 flex gap-6 items-start hover:bg-paper-raised transition-colors"
+              className={`bg-paper p-8 flex gap-6 items-start hover:bg-paper-raised transition-colors ${
+                isLastOdd ? "sm:col-span-2" : ""
+              }`}
             >
               <div className={`w-12 h-12 shrink-0 ${c.color} ${shapeClass}`} />
               <div>
-                <p className="mono text-xs text-ink-soft mb-1">{c.level}</p>
+                <p className="mono text-sm text-ink-soft mb-1">{c.level}</p>
                 <h3 className="display text-xl font-semibold mb-2">{c.title}</h3>
-                <p className="mono text-xs text-navy">{wordCount} words →</p>
+                <p className="mono text-sm text-navy">{wordCount} words →</p>
               </div>
             </a>
           );
